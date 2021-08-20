@@ -7,9 +7,11 @@ Paso a paso para ejecutar la aplicación:
 - usuario: postgres
 - contrasena: admin
 
-2. Luego de instalar el motor de base de datos ejecutar los siguientes queries:
+2. Luego de instalar el motor de base de datos debe:
 
-- create database mutantes;
+- Crear base de datos mutantes.
+
+Una vez creada la base de datos ejecutar los siguientes queries:
 
 - create schema mutante;
 
@@ -20,34 +22,39 @@ Paso a paso para ejecutar la aplicación:
     mutante Boolean			NOT NULL,
     CONSTRAINT humano_pk PRIMARY KEY (id),
     CONSTRAINT humano_uk unique (adn)
-}
+)
 
 3. Clonar y descargar los siguientes proyectos:
 
-- https://github.com/DavidSegura3/eurekaservermutante.git
-- https://github.com/DavidSegura3/mutantesmercadolibre.git
-- https://github.com/DavidSegura3/gatewayservermutant.git
+- git clone https://github.com/DavidSegura3/eurekaservermutante.git
+- git clone https://github.com/DavidSegura3/mutantesmercadolibre.git
+- git clone https://github.com/DavidSegura3/gatewayservermutant.git
 
 
-4. Una vez clonados hacer checkout de la rama develop.
+4. Una vez clonados hacer checkout de la rama develop de los tres proyectos clonados anteriormente.
 
 5. Validar el usuario y la contraseña de la base de datos, por defecto tengo los siguientes valores en el archivo de application.properties.
 
 - spring.datasource.username=postgres
 - spring.datasource.password=admin
 
-Si tiene valores diferentes cambiar el archivo application.propierties del proyecto mutantesmercadolibre.
+Si tiene valores diferentes cambiar el archivo application.propierties del proyecto mutantesmercadolibre que se encuentra en la ruta src\main\resources
 
-6. Importar los proyectos como MAVEN. 
 
-7. Ejecutar los proyectos en el siguiente orden:
+
+6. Importar los proyectos como MAVEN en la IDE eclipse, spring tool suite o intellij, 
+
+**Tener en cuenta que el proyecto MELIMutant utiliza para la entidad la librería lombook, si no la tiene en la ide, por favor instalarla.**
+
+
+7. Ejecutar los proyectos **run as spring boot app** en el siguiente orden:
 
 - EurekaServerMutant
 - MELIMutant (Puede crear las instancias necesarias para que Eureka Server utilice el balancero de carga)
 - GatewayServerMutant
 
 
-8. Una vez los proyectos se encuentren arriba se deben ejecutar los siguientes endpoints:
+8. Una vez los proyectos se encuentren arriba se deben ejecutar los siguientes endpoints en postman o soapUI
 
 **El primer endpoint es para analizar el array y agregar los valores y determinar los mutantes**
 Endpoint de tipo POST:
@@ -113,4 +120,5 @@ En la imagen aparece Gateway zull, yo estoy utilizando **Spring Cloud Gateway**,
 
 
 > @Author - David Segura - 20-08-2021.
+
 
